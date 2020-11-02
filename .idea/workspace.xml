@@ -279,15 +279,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Label" />
-      <item itemvalue="Python.device_state" />
-      <item itemvalue="Python.droidbot_ime" />
-      <item itemvalue="Python.start" />
       <item itemvalue="Python.DamerauLevenshteinStringComparer" />
       <item itemvalue="Python.JaroWinklerStringComparer" />
+      <item itemvalue="Python.Label" />
       <item itemvalue="Python.MaxComposedStringComparer" />
       <item itemvalue="Python.Tokenizer" />
       <item itemvalue="Python.ValuesTests (1)" />
+      <item itemvalue="Python.device_state" />
+      <item itemvalue="Python.droidbot_ime" />
+      <item itemvalue="Python.start" />
     </list>
     <recent_temporary>
       <list>
