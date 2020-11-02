@@ -2,6 +2,7 @@ from DBInput.database.DatabaseStructure import DatabaseStructure
 from DBInput.database.Table import Table
 
 
+#ftyguhijo
 class DatabaseStructureFactory:
 
     def __init__(self, query_engine):
