@@ -41,6 +41,7 @@ class SynonymStringComparer(IStringComparer):
             if clean_token is not "":
                 clean_tokens.add(clean_token)
         return self.Lemmatize(clean_tokens)
+ #teste
 
     def Lemmatize(self, tokens):
         lemmatized_tokens = set()

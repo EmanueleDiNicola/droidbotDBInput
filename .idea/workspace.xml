@@ -6,33 +6,11 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/SynonymStringComparer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/device.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/device_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/device_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/droidbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/droidbot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/droidmaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/droidmaster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_policy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/DroidBoxTests.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/start.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utg.py" beforeDir="false" afterPath="$PROJECT_DIR$/utg.py" afterDir="false" />
-    </list>
+    <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +24,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="hiddenUrls">
@@ -337,6 +315,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="526" y="204" key="#Notifications" timestamp="1604329836745">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="526" y="204" key="#Notifications/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329836745" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603982965476">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -359,10 +341,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604328488795" />
-    <state x="520" y="239" key="Github.ShareDialog" timestamp="1604327781040">
+    <state x="520" y="239" key="Github.ShareDialog" timestamp="1604329010773">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="520" y="239" key="Github.ShareDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604327781040" />
+    <state x="520" y="239" key="Github.ShareDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329010773" />
+    <state x="362" y="46" key="Github.UntrackedFilesDialog" timestamp="1604329052856">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="362" y="46" key="Github.UntrackedFilesDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329052856" />
     <state width="1259" height="230" key="GridCell.Tab.0.bottom" timestamp="1603988944683">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -399,10 +385,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="204" key="GridCell.Tab.1.right/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1603644184034" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1604328913907">
+    <state x="142" y="0" key="SettingsEditor" timestamp="1604330224682">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604328913907" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604330224682" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1595776409715" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1604328309616">
       <screen x="0" y="0" width="1280" height="680" />
