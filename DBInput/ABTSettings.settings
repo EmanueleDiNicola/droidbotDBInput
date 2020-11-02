@@ -1,0 +1,108 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ABT_core.Properties" GeneratedClassName="ABTSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="number_of_episodes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="number_of_steps" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="sleep_time" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="hours" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="minutes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="technology" Type="System.String" Scope="User">
+      <Value Profile="(Default)">html</Value>
+    </Setting>
+    <Setting Name="dataset_xml_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="epsilon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.8</Value>
+    </Setting>
+    <Setting Name="initialValue" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="gamma" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.9</Value>
+    </Setting>
+    <Setting Name="alpha" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0.9</Value>
+    </Setting>
+    <Setting Name="stateIdentification" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ALL_WIDGET_PROPERTIES</Value>
+    </Setting>
+    <Setting Name="DataSource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost\SQLEXPRESS01</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">diego</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">password1</Value>
+    </Setting>
+    <Setting Name="InitialCatalog" Type="System.String" Scope="User">
+      <Value Profile="(Default)">bugtracker_equals</Value>
+    </Setting>
+    <Setting Name="complexActionProbability" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.8</Value>
+    </Setting>
+    <Setting Name="lemmatizer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\User\Desktop\resources\Lemmatizer</Value>
+    </Setting>
+    <Setting Name="driver" Type="System.String" Scope="User">
+      <Value Profile="(Default)">selenium</Value>
+    </Setting>
+    <Setting Name="browserDriverPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\User\Desktop\resources\BrowserDriver</Value>
+    </Setting>
+    <Setting Name="application" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost/mantisbt/my_view_page.php</Value>
+    </Setting>
+    <Setting Name="locatorStrategy" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="scanningWidgetsFilter" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\User\Desktop\resources\Filters\scanning-filter-MANTIS-SELENIUM.xml</Value>
+    </Setting>
+    <Setting Name="saveScreenshots" Type="System.String" Scope="User">
+      <Value Profile="(Default)">false</Value>
+    </Setting>
+    <Setting Name="word2vecModel" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\User\Desktop\resources\GoogleNews-vectors-negative300-SLIM.bin</Value>
+    </Setting>
+    <Setting Name="relationMakerType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MAXSIMILARITY_MEANLABELS_NEW</Value>
+    </Setting>
+    <Setting Name="tosca_workspace_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="qualityCheck" Type="System.String" Scope="User">
+      <Value Profile="(Default)">WEIGHT</Value>
+    </Setting>
+    <Setting Name="wordnet" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="outputPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Selenium\outputs</Value>
+    </Setting>
+    <Setting Name="existingTestSuite" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LinkPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\User\Desktop\resources\link.jar</Value>
+    </Setting>
+    <Setting Name="useCaching" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="numCachingIterations" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
