@@ -15,9 +15,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +29,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubPullRequestsUISettings">
@@ -54,7 +57,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
@@ -276,15 +279,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.DamerauLevenshteinStringComparer" />
-      <item itemvalue="Python.JaroWinklerStringComparer" />
       <item itemvalue="Python.Label" />
-      <item itemvalue="Python.MaxComposedStringComparer" />
-      <item itemvalue="Python.Tokenizer" />
-      <item itemvalue="Python.ValuesTests (1)" />
       <item itemvalue="Python.device_state" />
       <item itemvalue="Python.droidbot_ime" />
       <item itemvalue="Python.start" />
+      <item itemvalue="Python.DamerauLevenshteinStringComparer" />
+      <item itemvalue="Python.JaroWinklerStringComparer" />
+      <item itemvalue="Python.MaxComposedStringComparer" />
+      <item itemvalue="Python.Tokenizer" />
+      <item itemvalue="Python.ValuesTests (1)" />
     </list>
     <recent_temporary>
       <list>
@@ -410,14 +413,14 @@
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604330224682" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1595776409715" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1604331028793">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1604332343763">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604331028793" />
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604330398418">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604332343763" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604332554581">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604330398418" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604332554581" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1603639965317">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
