@@ -7,10 +7,17 @@
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="" />
+    <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -289,6 +296,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -300,6 +308,14 @@
       <option name="presentableId" value="Default" />
       <updated>1595595979380</updated>
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1604330431484</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604330431484</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -313,6 +329,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="526" y="204" key="#Notifications" timestamp="1604329836745">
@@ -390,10 +410,14 @@
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604330224682" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1595776409715" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1604328309616">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1604331028793">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604328309616" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604331028793" />
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604330398418">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="450" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604330398418" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1603639965317">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
