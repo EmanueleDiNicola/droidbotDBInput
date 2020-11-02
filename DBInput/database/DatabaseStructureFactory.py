@@ -2,8 +2,6 @@ from DBInput.database.DatabaseStructure import DatabaseStructure
 from DBInput.database.Table import Table
 
 
-#Test2
-#test3
 class DatabaseStructureFactory:
 
     def __init__(self, query_engine):
