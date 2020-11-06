@@ -5,6 +5,7 @@ from DBInput.relations.PageDatabaseRelation import PageDatabaseRelation
 from DBInput.relations.TablePageRelation import TablePageRelation
 from DBInput.relations.fieldcolumncomparer.stringcomparer.DamerauLevenshteinStringComparer import \
     DamerauLevenshteinStringComparer
+from DBInput.relations.fieldcolumncomparer.stringcomparer.EditDistanceStringComparer import EditDistanceStringComparer
 from DBInput.relations.fieldcolumncomparer.stringcomparer.JaroWinklerStringComparer import JaroWinklerStringComparer
 from DBInput.relations.fieldcolumncomparer.stringcomparer.Tokenizer import SplitCamelCase, SplitSeparators
 from DBInput.webapp.Field import Field
@@ -49,4 +50,17 @@ stringA = "GioVanNi"
 stringB = SplitCamelCase("Gi o Van Ni1")
 stringA = SplitCamelCase(stringA)
 stringC = SplitSeparators("Giov*Anni")
+stringA = "CiaoCiaoCiaoCiao"
+stringB = "fjfjfjfjfjfjfAfFFFFAaas"
+edsc = EditDistanceStringComparer()
+test20 = edsc.Functtest(stringA, stringB)
+print(test20)
+test0 = edsc.Diff(stringA, stringB)
+print(test0)
+test1 = edsc.GetEditDistance(stringA, stringB)
+print(test1)
+test2 = edsc.StringSimilarity(stringA, stringB)
+print(test2)
+
+#Da testare tutto stringcomparer per bene
 #exec(open("DBInput\ValuesTests.py").read())

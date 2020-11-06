@@ -17,7 +17,6 @@ def SplitSeparators(str):
     word = ""
     for i in range(len(str)):
         if str[i] in separators:
-            print(strings)
             strings.append(word)
             word = ''
         else:
