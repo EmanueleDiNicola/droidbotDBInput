@@ -2,10 +2,11 @@ import re
 
 
 def SplitCamelCase(string):
-    list_string = re.findall(r'[A-Z](?:[a-z]+|[A-Z]*(?=[A-Z]|$))', string)
+    list_string = re.sub('([A-Z][a-z]+)', r' \1', re.sub('([A-Z]+)', r' \1', string)).split()
     return_strings = ""
     for word in list_string:
-        return_strings = return_strings + word + " "
+        if word is not '':
+            return_strings = return_strings + word + " "
     return return_strings
 
 

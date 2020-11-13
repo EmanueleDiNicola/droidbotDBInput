@@ -8,10 +8,11 @@ from DBInput.relations.fieldcolumncomparer.stringcomparer.DamerauLevenshteinStri
 from DBInput.relations.fieldcolumncomparer.stringcomparer.EditDistanceStringComparer import EditDistanceStringComparer
 from DBInput.relations.fieldcolumncomparer.stringcomparer.JaroWinklerStringComparer import JaroWinklerStringComparer
 from DBInput.relations.fieldcolumncomparer.stringcomparer.Tokenizer import SplitCamelCase, SplitSeparators
+from DBInput.relations.fieldcolumncomparer.stringcomparer.Word2VecComparer import Word2VecComparer
+from DBInput.relations.fieldcolumncomparer.stringcomparer.Word2VecUtilities import Word2VecUtilities
 from DBInput.webapp.Field import Field
 from DBInput.webapp.Label import Label
 from DBInput.webapp.Page import Page
-from DBInput.relations.fieldcolumncomparer.StringTransformation import CleanString
 
 labelA = Label("A")
 labelB = Label("B")
@@ -46,21 +47,22 @@ dl_string_comp = DamerauLevenshteinStringComparer()
 dl_string_comp_value = dl_string_comp.StringSimilarity(stringA, stringB)
 jw_string_comp = JaroWinklerStringComparer()
 jw_string_comp_value = jw_string_comp.StringSimilarity(stringA, stringB)
-stringA = "GioVanNi"
+stringA = "GioVanNi:2_sfd"
 stringB = SplitCamelCase("Gi o Van Ni1")
 stringA = SplitCamelCase(stringA)
+stringA = SplitSeparators(stringA)
 stringC = SplitSeparators("Giov*Anni")
-stringA = "CiaoCiaoCiaoCiao"
-stringB = "fjfjfjfjfjfjfAfFFFFAaas"
+stringB = "hollow"
+stringA = "yellow"
 edsc = EditDistanceStringComparer()
-test20 = edsc.Functtest(stringA, stringB)
-print(test20)
-test0 = edsc.Diff(stringA, stringB)
-print(test0)
-test1 = edsc.GetEditDistance(stringA, stringB)
-print(test1)
+test4 = edsc.GetLemmatizedTokens(stringA)
+test1 = edsc.GetEditDistance(stringA, stringA)
 test2 = edsc.StringSimilarity(stringA, stringB)
-print(test2)
+w2vec = Word2VecUtilities()
+w2vec.Load("Path")
+test1 = w2vec.GetClosestWords(stringA)
+w2vec_comp = Word2VecComparer(True)
+w2vec_comp_res = w2vec_comp.StringSimilarity(stringB, stringA)
 
 #Da testare tutto stringcomparer per bene
 #exec(open("DBInput\ValuesTests.py").read())

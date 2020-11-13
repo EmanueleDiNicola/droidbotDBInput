@@ -36,3 +36,9 @@ class InvalidOperationException(Exception):
     def __init__(self, error_name):
         self.error_name = error_name
         super().__init__(self.error_name)
+
+
+class KeyNotFoundException(Exception):
+    def __init__(self):
+        self.error_name = "Word2VecUtilities: Key not found"
+        super().__init__(self.error_name)
