@@ -17,13 +17,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/DBIExceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/DBIExceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/ValuesTests.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/ValuesTests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/IFieldColumnComparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/IFieldColumnComparer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/EditDistanceStringComparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/EditDistanceStringComparer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Tokenizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Tokenizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Word2VecComparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Word2VecComparer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Word2Vecutilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Word2VecUtilities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBInput/relations/clustering/WebDBScan.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/clustering/WebDBScan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -378,29 +372,29 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="362" y="46" key="Github.UntrackedFilesDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329052856" />
-    <state width="1259" height="230" key="GridCell.Tab.0.bottom" timestamp="1605277659814">
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom" timestamp="1605281473316">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605277659814" />
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605281473316" />
     <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1601310220457" />
-    <state width="1259" height="230" key="GridCell.Tab.0.center" timestamp="1605277659813">
+    <state width="1259" height="230" key="GridCell.Tab.0.center" timestamp="1605281473316">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="204" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605277659813" />
+    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605281473316" />
     <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1601310220457" />
-    <state width="1259" height="230" key="GridCell.Tab.0.left" timestamp="1605277659813">
+    <state width="1259" height="230" key="GridCell.Tab.0.left" timestamp="1605281473316">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="204" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605277659813" />
+    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605281473316" />
     <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1601310220456" />
-    <state width="1259" height="230" key="GridCell.Tab.0.right" timestamp="1605277659814">
+    <state width="1259" height="230" key="GridCell.Tab.0.right" timestamp="1605281473316">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="204" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605277659814" />
+    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605281473316" />
     <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1601310220457" />
     <state width="1259" height="204" key="GridCell.Tab.1.bottom" timestamp="1604685655665">
       <screen x="-1920" y="-130" width="1280" height="680" />

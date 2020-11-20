@@ -1,15 +1,13 @@
 from sklearn.cluster import DBSCAN
 import numpy as np
 from py_linq import Enumerable
-
 from DBInput.relations.setcover.MinimumSetCoverAlgorithm import MinimumSetCoverAlgorithm
 
-
+#INCOMPLETA, INTERROTTA
 class Point:
-        def __init__(self, x, y):
-            self.x = x
-            self.y = y
-
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
     class WebDBSCAN:
         class DBSCANPoint:
             def __init__(self, x, y):
