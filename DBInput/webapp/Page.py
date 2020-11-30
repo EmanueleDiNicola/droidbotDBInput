@@ -5,48 +5,48 @@ from DBInput.DBIExceptions import ArgumentNullException
 class Page:
     def __init__(self, fields, url=None, title=None):
         if fields is None or None in fields:
-            raise ArgumentNullException("fields")
+            raise ArgumentNullException("Page: fields is None or None is in field")
         self.fields = fields
         self.url = url
         self.title = title
 
-    def get_field_count(self):
+    def GetFieldCount(self):
         return len(self.fields)
 
-    def equals(self, obj):
+    def Equals(self, obj):
         if not isinstance(obj, Page) or obj is None:
             return False
         other_page = obj
         if len(self.fields) != len(other_page.fields):
             return False
         for i in range(len(self.fields)):
-            if self.fields[i].same(other_page.fields[i]):
+            if self.fields[i].Same(other_page.fields[i]):
                 pass
             else:
                 return False
         return True
 
-    def get_fields(self):
+    def GetFields(self):
         return self.fields
 
-    def get_title(self):
+    def GetTitle(self):
         return self.title
 
-    def get_url(self):
+    def GetUrl(self):
         return self.url
 
-    def tostring(self):
+    def ToString(self):
         stringresult = "Page : ["
         if self.url is not None:
             stringresult = stringresult + " Url: " + self.url
         if self.title is not None:
             stringresult = stringresult + " Title : " + self.title
         for field in self.fields:
-            stringresult = stringresult + "(" + field.tostring() + "), "
+            stringresult = stringresult + "(" + field.ToString() + "), "
         return stringresult + "]"
 
-    def get_hash_code(self):
+    def GetHashCode(self):
         hash_code = 3042524
         for field in self.fields:
-            hash_code = hash_code + field.get_hash_code()
+            hash_code = hash_code + field.GetHashCode()
         return hash_code

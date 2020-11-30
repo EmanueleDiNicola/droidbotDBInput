@@ -26,5 +26,3 @@ class DatabaseStructure:
 
     def Count(self):
         return len(self.tables)
-
-#exec(open("DBInput\database\DatabaseStructure.py").read())

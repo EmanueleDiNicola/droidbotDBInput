@@ -15,7 +15,7 @@ class MaxComposedStringComparer(IStringComparer):
     def StringSimilarity(self, s1, s2):
         max = 0
         for comparer in self.string_comparers:
-            similarity = comparer.StringSimiliarity(s1, s2)
+            similarity = comparer.StringSimilarity(s1, s2)
             if similarity > max:
                 max = similarity
         return max

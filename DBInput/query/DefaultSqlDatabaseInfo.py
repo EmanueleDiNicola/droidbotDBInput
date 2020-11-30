@@ -1,11 +1,11 @@
 from typing import Any
 
-from DBInput.query import SqlDatabaseInfo
+from DBInput.query.SqlDatabaseInfo import SqlDatabaseInfo
 
 
 class DefaultSqlDatabaseInfo:
     def __init__(self):
-        self.default_info = SqlDatabaseInfo.SqlDatabaseInfo.__init__()
+        self.default_info = SqlDatabaseInfo()
 
     def __setattr__(self, name: str, value: Any) -> None:
         super().__setattr__(name, value)

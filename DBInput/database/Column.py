@@ -4,12 +4,12 @@ from DBInput.DBIExceptions import ArgumentNullException, ArgumentException
 
 
 class Column:
-    def __init__(self, name, tableName):
-        if tableName is None:
-            raise ArgumentNullException("tablename can not be null")
+    def __init__(self, name, table_name):
+        if table_name is None:
+            raise ArgumentNullException("Column.init: tablename can not be null")
         if name is None:
-            raise ArgumentNullException("name can not be null")
-        self.tableName = tableName
+            raise ArgumentNullException("Column.init: name can not be null")
+        self.table_name = table_name
         self.name = name
         self.values = list()
 
@@ -21,7 +21,8 @@ class Column:
 
     def Add(self, value):
         if value is None:
-            raise ArgumentNullException("value", "value can not be null")
+            #raise ArgumentNullException("Column.Add: value can not be null")
+            self.values.append(None)
         else:
             self.values.append(value)
 
@@ -31,6 +32,7 @@ class Column:
             clone.Add(value)
         return clone
 
+    #Not used
     def ValuesNotNull(self):
         if self.values is None:
             return False
@@ -39,22 +41,23 @@ class Column:
                 return False
         return True
 
+    #Not Used
     def ObjectInvariantMethod(self):
         if self.name is None:
             return False
-        if self.tableName is None:
+        if self.table_name is None:
             return False
         if not self.ValuesNotNull():
             return False
         return True
 
-    def equals(self, obj):
+    def Equals(self, obj):
         if obj is None:
             return False
         if isinstance(obj, Column):
             if obj.Count() != self.Count():
                 return False
-            if obj.name == self.name and obj.tableName == self.tableName:
+            if obj.name == self.name and obj.table_name == self.table_name:
                 for i in range(len(self.values)):
                     if self.values[i] != obj.values[i]:
                         return False
@@ -71,7 +74,8 @@ class Column:
     def __getattribute__(self, name: str) -> Any:
         return super().__getattribute__(name)
 
-    def toString(self):
-        return self.name + " " + self.tableName
-
-#exec(open("DBInput\database\Column.py").read())
+    def ToString(self):
+        output = self.name + " "
+        for value in self.values:
+            output = output + " - " + str(value)
+        return output

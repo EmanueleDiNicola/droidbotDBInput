@@ -39,12 +39,12 @@ class TablePageRelation:
         self.relations.append(field_column_relation)
 
     def ToString(self):
-        return self.table.ToString() + " -> " + self.page.tostring()
+        return self.table.ToString() + " -> " + self.page.ToString()
 
     def Equals(self, obj):
         if obj is None or not isinstance(obj, TablePageRelation):
             return False
-        return self.page.equals(obj.page) and self.table.__eq__(obj.table)
+        return self.page.Equals(obj.page) and self.table.__eq__(obj.table)
 
     def __hash__(self) -> int:
         return super().__hash__()

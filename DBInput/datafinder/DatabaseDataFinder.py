@@ -14,18 +14,18 @@ class DatabaseDataFinder(IDataFinder):
         relation = self.GetRelation(page)
         data_for_fields = dict()
         self.r = np.random.randint(1000000000000)
-        for field in page.get_fields():
+        for field in page.GetFields():
             data = relation.GetData(field, self.r)
             data_for_fields[field] = data
         return data_for_fields
 
     def GetRelation(self, page):
         print("Finding widgets-DB columns matches...")
-        if not page.get_hash_code() in self.known_relations:
+        if not page.GetHashCode() in self.known_relations:
             relation = self.relations_maker.FindBestMatch(page, self.database)
-            self.known_relations[page.get_hash_code()] = relation
+            self.known_relations[page.GetHashCode()] = relation
         else:
-            relation = self.known_relations[page.get_hash_code()]
+            relation = self.known_relations[page.GetHashCode()]
         self.PrintBestMatches(relation.GetRelations(), relation.GetTotalQuality())
         return relation
 
@@ -34,15 +34,15 @@ class DatabaseDataFinder(IDataFinder):
         tables = list()
         column = list()
         for r in best_matches:
-            tables.append(r.column.tableName)
-            column.append(r.column.tableName + "." + r.column.name)
-            print("For field " + r.field.tostring() + " and column " + r.column.tableName + "." + r.column.name
+            tables.append(r.column.table_name)
+            column.append(r.column.table_name + "." + r.column.name)
+            print("For field " + r.field.ToString() + " and column " + r.column.table_name + "." + r.column.name
                   + "the match is " + r.value)
 
     def GetUnrelatedData(self, page):
         relation = GetRelation(page)
         data_for_fields = dict()
-        for field in page.get_fields():
+        for field in page.GetFields():
             self.r = np.random.randint(1000000000000)
             data = relation.GetData(field, self.r)
             data_for_fields[field] = data

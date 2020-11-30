@@ -5,10 +5,10 @@ from DBInput.DBIExceptions import ArgumentNullException, ArgumentException
 
 def ValuesAreValid(values):
     if values is None:
-        raise ArgumentNullException("values: Values can not be null")
+        raise ArgumentNullException("Row.ValuesAreValid, values: Values can not be null")
     for value in values:
         if value is None:
-            raise ArgumentException("No element inside the array can be null: values")
+            raise ArgumentException("Row.ValuesAreValid: No element inside the array can be null: values")
     return True
 
 
@@ -26,7 +26,7 @@ class Row:
     def Length(self):
         return len(self.values)
 
-    def equals(self, obj):
+    def Equals(self, obj):
         if obj is None:
             return False
         if isinstance(obj, Row):
@@ -38,7 +38,7 @@ class Row:
             return True
         return False
 
-    def toString(self):
+    def ToString(self):
         output = "Row:"
         for v in self.values:
             output = output + " - " + str(v)

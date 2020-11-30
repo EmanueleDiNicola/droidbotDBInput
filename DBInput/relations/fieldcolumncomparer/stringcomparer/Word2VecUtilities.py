@@ -8,24 +8,21 @@ from collections import Counter
 
 class Word2VecUtilities:
     def __init__(self):
-        self.model_path = None
         self.cached_closest_words = dict()
         self.cached_words_similarity = dict()
         self.max_similar_words = 1
         self.vocabulary = None
-        self.reader = None
         self.is_loaded = False
 
     def IsLoaded(self):
         return self.is_loaded
 
-    def Load(self, resources_path):
-        self.model_path = resources_path
-        # Da vedere cosa farci con model_path e simili
+    def Load(self):
         self.vocabulary = list(wn.all_lemma_names())
         self.is_loaded = True
 
     def GetClosestWords(self, old_word):
+        self.Load()
         word = str(old_word)
         if not self.is_loaded:
             raise InvalidOperationException("Word2vec model has not been loaded")
@@ -36,11 +33,12 @@ class Word2VecUtilities:
         return self.cached_closest_words[word]
 
     def GetWord2VecSimilarity(self, word1, word2):
+        self.Load()
         if not self.is_loaded:
             raise InvalidOperationException("Word2vec model has not been loaded")
         if not self.cached_words_similarity.__contains__(word1 + word2) or not self.cached_words_similarity.__contains__(word2 + word1):
             if word1 in self.vocabulary and word2 in self.vocabulary:
-                similarity = self.get_cosine(word1, word2)
+                similarity = self.cosdis(self.word2vec(word1), self.word2vec(word2))
                 if similarity < 0:
                     similarity = 0
                 if similarity > 1:
@@ -54,20 +52,14 @@ class Word2VecUtilities:
         return self.cached_words_similarity[word1 + word2]
 
     # Codice preso in giro
-    def get_cosine(self, text1, text2):
-        vec1 = self.text_to_vector(text1)
-        vec2 = self.text_to_vector(text2)
-        intersection = set(vec1.keys()) & set(vec2.keys())
-        numerator = sum([vec1[x] * vec2[x] for x in intersection])
-        sum1 = sum([vec1[x] ** 2 for x in list(vec1.keys())])
-        sum2 = sum([vec2[x] ** 2 for x in list(vec2.keys())])
-        denominator = math.sqrt(sum1) * math.sqrt(sum2)
-        if not denominator:
-            return 0.0
-        else:
-            return float(numerator) / denominator
+    def word2vec(self, word):
 
-    def text_to_vector(self, text):
-        word = re.compile(r"\w+")
-        words = word.findall(text)
-        return Counter(words)
+        cw = Counter(word)
+        sw = set(cw)
+        lw = math.sqrt(sum(c * c for c in cw.values()))
+
+        return cw, sw, lw
+
+    def cosdis(self, v1, v2):
+        common = v1[1].intersection(v2[1])
+        return sum(v1[0][ch] * v2[0][ch] for ch in common) / v1[2] / v2[2]

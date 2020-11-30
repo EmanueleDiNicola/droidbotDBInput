@@ -2,7 +2,6 @@ from DBInput.DBIExceptions import ArgumentNullException
 
 
 class PageDatabaseRelation:
-    # Prende page ma non la usa (?)
     def __init__(self, page, field_column_relations, quality):
         if field_column_relations is None:
             raise ArgumentNullException("fieldColumnRelations is Null")
@@ -25,5 +24,3 @@ class PageDatabaseRelation:
         column = self.field_column_relations[field].column
         data = column.Get(row_number % (column.Count()))
         return data
-
-#exec(open("DBInput\\relations\PageDatabaseRelation.py").read())

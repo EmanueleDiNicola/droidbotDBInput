@@ -2,6 +2,7 @@ from DBInput.DBIExceptions import ArgumentNullException
 from py_linq import Enumerable
 from DBInput.relations.FieldColumnRelation import FieldColumnRelation
 from DBInput.relations.PageDatabaseRelation import PageDatabaseRelation
+# from DBInput.relations.clustering.MyDBSCAN import MyDBSCAN
 from DBInput.relations.clustering.MyDBSCAN import MyDBSCAN
 from DBInput.relations.fieldcolumncomparer.MaxQualityComparer import MaxQualityComparer
 from DBInput.relations.fieldcolumncomparer.MeanQualityComparer import MeanQualityComparer
@@ -75,7 +76,7 @@ class DefaultRelationsMaker(IRelationsMaker):
             raise ArgumentNullException("Page")
         if database is None:
             raise ArgumentNullException("Database")
-        if len(page.get_fields()) == 0:
+        if len(page.GetFields()) == 0:
             return self.CreatePageDatabaseRelation(list(), page)
         all_sims = self.ComputeAllSimilarities(page, database)
         filtered_sims = self.FilterSimilarities(page, all_sims)
@@ -84,16 +85,16 @@ class DefaultRelationsMaker(IRelationsMaker):
         return self.CreatePageDatabaseRelation(best_match, page)
 
     def CreatePageDatabaseRelation(self, choosen_relations, page):
+        choosen_relations = Enumerable(choosen_relations)
         field_column_relation = dict()
-        for field in page.get_fields():
-            field_column_relation[field] = Enumerable(choosen_relations).where(lambda fc: fc.field.equals(field)) \
-                .first()
+        for field in page.GetFields():
+            field_column_relation[field] = choosen_relations.where(lambda fc: fc.field.Equals(field)).first()
         return PageDatabaseRelation(page, field_column_relation.values(), MinimumSetCoverAlgorithm().current_best_value)
 
     def ComputeAllSimilarities(self, page, database):
         all_sims = list()
-        for field in page.get_fields():
-            for table in database.tables:
+        for field in page.GetFields():
+            for key, table in database.tables.items():
                 for column in table.columns:
                     value = self.field_column_comparer.Compare(field, column)
                     sim = FieldColumnRelation(field, column, value)
@@ -103,24 +104,30 @@ class DefaultRelationsMaker(IRelationsMaker):
     def FilterSimilarities(self, page, all_sims):
         filtered_sims = Enumerable(list())
         all_sims_enum = Enumerable(all_sims)
-        for field in page.get_fields():
-            sim_for_field = all_sims_enum.where(lambda s: s.field.same(field)).to_list()
-            filtered_sims = filtered_sims.concat(MyDBSCAN().DBSCANForSims(sim_for_field)).to_list()
+        for field in page.GetFields():
+            sim_for_field = all_sims_enum.where(lambda s: s.field.Same(field)).to_list()
+            filtered_sims = filtered_sims.concat(Enumerable(MyDBSCAN().DBSCANForSims(sim_for_field)))
         schemas = dict()
+        # print(len(filtered_sims))
         for fc in filtered_sims:
-            if fc.column.tableName not in schemas:
+            if fc.column.table_name not in schemas:
                 columns = list()
-                schemas[fc.column.tableName] = columns.append(fc.column.name)
+                columns.append(fc.column.name)
+                schemas[fc.column.table_name] = columns
             else:
-                if fc.column.name not in schemas[fc.column.tableName]:
-                    schemas[fc.column.tableName] = schemas[fc.column.tableName].append(fc.column.name)
+                if fc.column.name not in schemas[fc.column.table_name]:
+                    new_columns_list = schemas[fc.column.table_name]
+                    new_columns_list.append(fc.column.name)
+                    schemas[fc.column.table_name] = new_columns_list
+        """
         for schema in schemas.keys():
             print("Columns for " + schema + ":")
             print(schemas[schema])
             print("---------------------------------")
+        """
         work_list = list(schemas.keys())
         for first_schema in schemas.keys():
-            work_list.remove(first_schema)
+            # print(work_list)
             first_schema_similarity = self.ComputePageTableSimilarity(page, first_schema)
             for second_schema in work_list:
                 first_schema_enum = Enumerable(schemas[first_schema])
@@ -130,37 +137,40 @@ class DefaultRelationsMaker(IRelationsMaker):
                 equal = first_contained and second_contained
                 second_schema_similarity = self.ComputePageTableSimilarity(page, second_schema)
                 if (first_contained and not equal) or (equal and first_schema_similarity <= second_schema_similarity):
-                    filtered_sims = filter(lambda element: element.column.tableName == second_schema,
-                                           filtered_sims.to_list())
+                    filtered_sims = [item for item in filtered_sims.to_list() if item.column.table_name == second_schema]
                     break
                 if (second_contained and not equal) or (equal and second_schema_similarity <= first_schema_similarity):
-                    filtered_sims = filter(lambda element: element.column.tableName == first_schema,
-                                           filtered_sims.to_list())
-                    break
+                    filtered_sims = [item for item in filtered_sims.to_list() if item.column.table_name == first_schema]
+            work_list.remove(first_schema)
         schemas = dict()
         for fc in filtered_sims:
-            if fc.column.tableName not in schemas:
+            if fc.column.table_name not in schemas:
                 columns = list()
-                schemas[fc.column.tableName] = columns.append(fc.column.name)
+                columns.append(fc.column.name)
+                schemas[fc.column.table_name] = columns
             else:
-                if fc.column.name not in schemas[fc.column.tableName]:
-                    schemas[fc.column.tableName] = schemas[fc.column.tableName].append(fc.column.name)
+                if fc.column.name not in schemas[fc.column.table_name]:
+                    new_columns_list = schemas[fc.column.table_name]
+                    new_columns_list.append(fc.column.name)
+                    schemas[fc.column.table_name] = new_columns_list
+        """
         for schema in schemas.keys():
             print("Columns for " + schema + ":")
             print(schemas[schema])
             print("---------------------------------")
+        """
         return filtered_sims
 
     def GenerateAllMatches(self, page, filtered_sims):
-        return self.set_cover_algorithm.GenerateAllMaches(page, filtered_sims)
+        return self.set_cover_algorithm.GenerateAllMatches(page, filtered_sims)
 
     def EvaluateBestMatch(self, page, all_matches):
         return self.set_cover_algorithm.EvaluateBestMatch(page, all_matches)
 
     def ComputePageTableSimilarity(self, page, table):
         comparers = self.field_column_comparer.GetComparer().GetComparers()
-        title = page.get_title()
-        url = self.CutAllButPageName(page.get_url())
+        title = page.GetTitle()
+        url = self.CutAllButPageName(page.GetUrl())
         title_syntactic_similarity = comparers[0].StringSimilarity(title, table)
         title_semantic_similarity = comparers[1].StringSimilarity(title, table)
         title_similarity = max(title_semantic_similarity, title_syntactic_similarity)

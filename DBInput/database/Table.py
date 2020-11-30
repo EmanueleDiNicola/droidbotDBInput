@@ -95,7 +95,7 @@ class Table:
         if len(columns1) != len(columns2):
             return False
         for i in range(len(columns1)):
-            if not columns1[i].equals(columns2[i]):
+            if not columns1[i].Equals(columns2[i]):
                 return False
         return True
 
@@ -106,7 +106,7 @@ class Table:
         return hash_code
 
     def ToString(self):
-        return self.name + " " + str(len(self.columns)) + " columns"
-
-
-#exec(open("DBInput\database\Table.py").read())
+        output = self.name + " has " + str(len(self.columns)) + " columns:"
+        for column in self.columns:
+            output = output + "\n" + column.ToString()
+        return output

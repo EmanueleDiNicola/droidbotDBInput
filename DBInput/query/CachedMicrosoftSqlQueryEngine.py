@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from DBInput.DBIExceptions import SqlException
 from DBInput.query.IQueryEngine import IQueryEngine
 import numpy as np
@@ -14,7 +16,7 @@ class CachedMicrosoftSqlQueryEngine(IQueryEngine):
         self.table_column_names = dict()
         self.table_rows = dict()
         self.logger = logging.getLoggerClass()
-        self.load(sql_database_info)
+        self.Load(sql_database_info)
 
     def CreateSqlConnection(self, sql_database_info):
         connection = pyodbc.connect(
@@ -28,7 +30,7 @@ class CachedMicrosoftSqlQueryEngine(IQueryEngine):
         )
         return connection
 
-    def load(self, sql_database_info):
+    def Load(self, sql_database_info):
         self.logger = logging.getLogger("Sql Database")
         self.logger.setLevel("DEBUG")
         try:
@@ -90,7 +92,9 @@ class CachedMicrosoftSqlQueryEngine(IQueryEngine):
         self.table_names = not_empty_tables
 
     def GetRow(self, columns):
-        #Non ho capito cosa deve fare sto metodo.
+        row = list()
+        for element in columns:
+            row.append(element.value)
         pass
 
     def GetRows(self, table_name, max_number_of_rows):
@@ -102,7 +106,7 @@ class CachedMicrosoftSqlQueryEngine(IQueryEngine):
             i = i + 1
             if i == number_of_rows:
                 break
-        print(output)
+        return output
 
     def GetTableColumnNames(self, table_name):
         return self.table_column_names[table_name]

@@ -8,7 +8,7 @@ class RandomValuesDtaFinder(IDataFinder):
 
     def GetRelatedData(self, page):
         data_for_fields = dict()
-        for field in page.get_fields():
+        for field in page.GetFields():
             data_for_fields[field] = self.GetRndomValue()
         return data_for_fields
 

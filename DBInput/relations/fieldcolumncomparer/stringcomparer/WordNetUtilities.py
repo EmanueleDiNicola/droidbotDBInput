@@ -13,13 +13,12 @@ class WordNetUtilities:
     def __getattribute__(self, name: str) -> Any:
         return super().__getattribute__(name)
 
-    def Load(self, resources_path):
-        nltk.data.path = resources_path
+    def Load(self):
         self.is_loaded = True
 
     def GetSynSets(self, word):
         if not self.is_loaded:
-            raise InvalidOperationException("Wordnet has not been implemented")
+            raise InvalidOperationException("Wordnet has not been Loaded")
         if self.cached_syn_sets.__contains__(word):
             return self.cached_syn_sets[word]
         syn_sets = wordnet.synsets(word)

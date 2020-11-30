@@ -13,9 +13,8 @@ class Word2VecComparer(IStringComparer):
         self.use_closest_words = use_closest_words
         self.cached_words_similarity = dict()
         self.w_2_vec_util = Word2VecUtilities()
-        if not self.w_2_vec_util.IsLoaded():
-            # Inserire path coerente
-            self.w_2_vec_util.Load("Path")
+        if not self.w_2_vec_util.IsLoaded:
+            self.w_2_vec_util.Load()
 
     def StringSimilarity(self, s1, s2):
         if len(s1) == 0 or len(s2) == 0:
@@ -39,8 +38,6 @@ class Word2VecComparer(IStringComparer):
                 if self.use_closest_words:
                     similarity = self.ComputeClosestWordsSimilarity(t1, t2)
                 else:
-                    print(str(t1) + " " + str(type(t1)))
-                    print(str(t2) + " " + str(type(t2)))
                     similarity = self.w_2_vec_util.GetWord2VecSimilarity(t1, t2)
                 if similarity > max:
                     max = similarity

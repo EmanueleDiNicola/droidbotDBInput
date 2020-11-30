@@ -1,4 +1,3 @@
-from DBInput.database.Column import *
 from DBInput.webapp.Field import *
 from DBInput.webapp.Label import *
 from typing import Any
@@ -20,12 +19,10 @@ class FieldColumnRelation:
         return super().__getattribute__(name)
 
     def Equals(self, obj):
-        return isinstance(obj, FieldColumnRelation) and self.field.equals(obj.field) and self.column.equals(obj.column)
+        return isinstance(obj, FieldColumnRelation) and self.field.Equals(obj.field) and self.column.Equals(obj.column)
 
     def __hash__(self) -> int:
         return super().__hash__()
 
     def ToString(self):
-        return "Q: " + str(self.value) + " " + self.field.tostring() + " " + self.column.toString()
-
-#exec(open("DBInput\\relations\FieldColumnRelation.py").read())
+        return "Q: " + str(self.value) + " " + self.field.ToString() + " " + self.column.ToString()

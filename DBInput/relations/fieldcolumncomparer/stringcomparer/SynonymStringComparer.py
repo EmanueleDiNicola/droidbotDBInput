@@ -1,4 +1,4 @@
-import nltk
+from nltk.corpus import wordnet
 from DBInput.DBIExceptions import NotImplementedException
 from DBInput.relations.fieldcolumncomparer.StringTransformation import CleanString
 from DBInput.relations.fieldcolumncomparer.stringcomparer.CachedLemmatizer import CachedLemmatizer
@@ -10,11 +10,12 @@ from DBInput.relations.fieldcolumncomparer.stringcomparer.WordNetUtilities impor
 class SynonymStringComparer(IStringComparer):
     def __init__(self):
         self.SYNONYM_SIMILARITY = 0.9
-        if not WordNetUtilities.is_loaded:
-            # TODO Controlla la funzione Load
-            WordNetUtilities.Load("DBInput.ABTSettinfs.settings")
-        if not CachedLemmatizer.is_loaded:
-            CachedLemmatizer.Load("DBInput.ABTSettinfs.settings")
+        self.word_net_utilities = WordNetUtilities()
+        self.cached_lemmatizer = CachedLemmatizer()
+        if not self.word_net_utilities.is_loaded:
+            self.word_net_utilities.Load()
+        if not self.cached_lemmatizer.is_loaded:
+            self.cached_lemmatizer.Load()
         self.cached_synonyms = dict()
 
     def StringSimilarity(self, s1, s2):
@@ -41,12 +42,11 @@ class SynonymStringComparer(IStringComparer):
             if clean_token is not "":
                 clean_tokens.add(clean_token)
         return self.Lemmatize(clean_tokens)
- #teste
 
     def Lemmatize(self, tokens):
         lemmatized_tokens = set()
         for token in tokens:
-            lemmatized_tokens.add(CachedLemmatizer.Lemmatize(token))
+            lemmatized_tokens.add(self.cached_lemmatizer.Lemmatize(token))
         return lemmatized_tokens
 
     def Tokenize(self, str):
@@ -58,12 +58,12 @@ class SynonymStringComparer(IStringComparer):
     def GetSynonyms(self, lemma):
         if lemma in self.cached_synonyms:
             return self.cached_synonyms[lemma]
-        syn_set_list = WordNetUtilities.GetSynSets(lemma)
+        syn_set_list = self.word_net_utilities.GetSynSets(lemma)
         synonyms = set()
         for syn_set in syn_set_list:
-            synonyms.union(syn_set.Words)
-            # VEDI COS'E' in debug
-        synonyms.remove(lemma)
+            synonyms.add(syn_set.lemmas()[0].name())
+        if lemma in synonyms:
+            synonyms.remove(lemma)
         self.cached_synonyms[lemma] = synonyms
         return synonyms
 
@@ -75,3 +75,26 @@ class SynonymStringComparer(IStringComparer):
 
     def ComputeSimilarity(self, s1_lemmas, s2_lemmas, intersection):
         return intersection / (len(s1_lemmas) + len(s2_lemmas) - intersection)
+
+    def StringSimilarity2(self, word_1, word_2):
+        s1_lemmas = self.GetLemmas(word_1)
+        s2_lemmas = self.GetLemmas(word_2)
+        tot = 0
+        for s1_lemma in s1_lemmas:
+            set_1 = wordnet.synsets(s1_lemma)
+            max_value = 0
+            #best_word_1 = None
+            #best_word_2 = None
+            for s2_lemma in s2_lemmas:
+                set_2 = wordnet.synsets(s2_lemma)
+                for word_set_1 in set_1:
+                    for word_set_2 in set_2:
+                        value = word_set_1.wup_similarity(word_set_2)
+                        #print(word_set_1.name() + " " + word_set_2.name() + " = " + str(value))
+                        if value is not None and value > max_value:
+                            max_value = value
+                            #best_word_1 = word_set_1.name()
+                            #best_word_2 = word_set_2.name()
+            #print(best_word_1 + " - " + best_word_2 + " = " + str(max_value))
+            tot = tot + max_value
+        return tot / (max(len(s1_lemmas), len(s2_lemmas)))

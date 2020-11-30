@@ -3,6 +3,7 @@ from DBInput.datafinder.IDataFinder import IDataFinder
 import os
 import numpy as np
 
+#Classe non implementata completamente poichè non necessaria
 class LinkDataFinder(IDataFinder):
     process_time_out_ms = 60000
 
@@ -16,8 +17,8 @@ class LinkDataFinder(IDataFinder):
 
     def GetRelatedData(self, page):
         data_for_fields = dict()
-        for field in page.get_fields():
-            if lent(field.labels) == 3:
+        for field in page.GetFields():
+            if len(field.labels) == 3:
                 label = field.labels[2]
                 data_for_fields[field] = self.GetValueForABTLabel(label.value.lower())
             else:
@@ -35,13 +36,13 @@ class LinkDataFinder(IDataFinder):
         return self.GetRandomValue()
 
     def GetRandomValue(self):
-        n = n + 1
-        return "string " + str(n)
+        self.n = self.n + 1
+        return "string " + str(self.n)
 
     def RemoveSpecialCharacters(self, s):
         new_s = ""
         for c in s:
-            if c.isalpha() or c.isspace()
+            if c.isalpha() or c.isspace():
                 new_s = new_s + c
         return new_s
 
@@ -51,11 +52,9 @@ class LinkDataFinder(IDataFinder):
         self.label_dictionary[abt_plan_label] = link_labels
 
     def ExecuteLinkQuery(self, abt_plan_label):
-        #fa roba con processo
         return None
 
     def LoadNewLabels(self):
-        #legge da Json
         return None
 
     def GetUnrelatedData(self, page):

@@ -105,7 +105,7 @@ class Monitor(object):
             script_content = self._build_monitor_script(script_dir)
             script = session.create_script(script_content)
             script.on("message", self._on_message)
-            script.load()
+            script.Load()
             self.device.resume(pid)
             self.start_time = time.clock()
 
