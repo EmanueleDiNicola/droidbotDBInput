@@ -77,7 +77,7 @@ class MyDBSCAN:
                 values.pop()
                 values = Enumerable(values)
             furthest_neighbor = cluster.order_by(lambda v: v).first()
-            neighbors = values.where(lambda vv: (furthest_neighbor - vv) <= R).to_list()
+            neighbors = values.where(lambda vv: (furthest_neighbor - vv) <= R)
             if len(neighbors) < DENSITY:
                 return cluster.to_list()
             cluster = cluster.concat(neighbors)

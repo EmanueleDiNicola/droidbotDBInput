@@ -5,6 +5,10 @@ import time
 from abc import abstractmethod
 
 import utils
+from DBInput.ValuesTests import cached_sql_query_engine
+from DBInput.database.DatabaseStructureFactory import DatabaseStructureFactory
+from DBInput.query.CachedMicrosoftSqlQueryEngine import CachedMicrosoftSqlQueryEngine
+from DBInput.query.SqlDatabaseInfo import SqlDatabaseInfo
 from intent import Intent
 
 POSSIBLE_KEYS = [
@@ -626,12 +630,17 @@ class SetTextEvent(UIEvent):
     def get_random_instance(device, app):
         pass
 
-    def __init__(self, x=None, y=None, view=None, text=None, event_dict=None):
+    def __init__(self, x=None, y=None, view=None, text="Text", event_dict=None):
         self.event_type = KEY_SetTextEvent
         self.x = x
         self.y = y
         self.view = view
+
+        "DBInput stuff"
         self.text = text
+        # self.DBInput_text_selection(view)
+        "End DBInput stuff"
+
         if event_dict is not None:
             self.__dict__.update(event_dict)
 
@@ -655,6 +664,10 @@ class SetTextEvent(UIEvent):
 
     def get_views(self):
         return [self.view] if self.view else []
+
+    def DBInput_text_selection(self, view):
+        print(view["is_password"])
+        return "AAA"
 
 
 class IntentEvent(InputEvent):

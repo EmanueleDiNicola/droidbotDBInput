@@ -2,6 +2,7 @@ import copy
 import math
 import os
 
+from DBInput.ViewTextAssociation import ViewTextAssociation
 from utils import md5
 from input_event import TouchEvent, LongTouchEvent, ScrollEvent, SetTextEvent, KeyEvent
 
@@ -60,7 +61,7 @@ class DeviceState(object):
         return views
 
     def __assemble_view_tree(self, root_view, views):
-        if not len(self.view_tree): # bootstrap
+        if not len(self.view_tree):  # bootstrap
             self.view_tree = copy.deepcopy(views[0])
             self.__assemble_view_tree(self.view_tree, views)
         else:
@@ -403,10 +404,14 @@ class DeviceState(object):
         for view_dict in self.views:
             # exclude navigation bar if exists
             if self.__safe_dict_get(view_dict, 'enabled') and \
-               self.__safe_dict_get(view_dict, 'resource_id') not in \
-               ['android:id/navigationBarBackground',
-                'android:id/statusBarBackground']:
-                enabled_view_ids.append(view_dict['temp_id'])
+                    self.__safe_dict_get(view_dict, 'resource_id') not in \
+                    ['android:id/navigationBarBackground',
+                     'android:id/statusBarBackground']:
+                if self.__safe_dict_get(view_dict, 'editable') and \
+                        self.__safe_dict_get(view_dict, 'text') is not None:
+                    pass
+                else:
+                    enabled_view_ids.append(view_dict['temp_id'])
         enabled_view_ids.reverse()
 
         for view_id in enabled_view_ids:
@@ -432,12 +437,27 @@ class DeviceState(object):
             if self.__safe_dict_get(self.views[view_id], 'long_clickable'):
                 possible_events.append(LongTouchEvent(view=self.views[view_id]))
 
+        text_view_dict = dict()
         for view_id in enabled_view_ids:
-            if self.__safe_dict_get(self.views[view_id], 'editable'):
-                possible_events.append(SetTextEvent(view=self.views[view_id], text="Prova!"))
+            if self.__safe_dict_get(self.views[view_id], 'editable') and \
+                    self.__safe_dict_get(self.views[view_id], 'text') is None:
+                text_view_dict[view_id] = self.views[view_id]
+            if self.__safe_dict_get(self.views[view_id], 'editable') and \
+                    self.__safe_dict_get(self.views[view_id], 'text') is not None:
                 touch_exclude_view_ids.add(view_id)
-                # TODO figure out what event can be sent to editable views
-                pass
+
+        if text_view_dict:
+            string = self.foreground_activity
+            sep = "/."
+            activity = string.split(sep, 1)[1]
+
+            view_text_association = ViewTextAssociation(text_view_dict, activity)
+            view_text_dict = view_text_association.GetViewKeyValue()
+
+        if text_view_dict:
+            for view_id in text_view_dict:
+                possible_events.append(SetTextEvent(view=self.views[view_id], text=view_text_dict[view_id]))
+                touch_exclude_view_ids.add(view_id)
 
         for view_id in enabled_view_ids:
             if view_id in touch_exclude_view_ids:

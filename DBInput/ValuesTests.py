@@ -139,12 +139,16 @@ page_customer_info_2 = Page([field_customer_name, field_customer_card_code, fiel
 
 #print(page_customer_info.ToString())
 #print(page_customer_info_2.ToString())
-
 # relationsmaker
 
 relations_maker = DefaultRelationsMaker("MAXSIMILARITY_MAXLABELS_OLD")
 relations_results = relations_maker.FindBestMatch(page_customer_info, database_struct)
+print(relations_results.GetData(field_customer_name, 1))
 for element in relations_results.GetRelations():
     print(element.field.ToString() + " - " + element.column.ToString() + " = " + str(element.value))
+example_dict = dict()
+for relation in relations_results.GetRelations():
+    example_dict[relation.field] = relations_results.GetData(relation.field, 1)
+print(example_dict)
 
 #exec(open("DBInput\ValuesTests.py").read())

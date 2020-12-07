@@ -174,9 +174,9 @@ class DefaultRelationsMaker(IRelationsMaker):
         title_syntactic_similarity = comparers[0].StringSimilarity(title, table)
         title_semantic_similarity = comparers[1].StringSimilarity(title, table)
         title_similarity = max(title_semantic_similarity, title_syntactic_similarity)
-        utl_syntactic_similarity = comparers[0].StringSimilarity(url, table)
+        url_syntactic_similarity = comparers[0].StringSimilarity(url, table)
         url_semantic_similarity = comparers[1].StringSimilarity(url, table)
-        url_similarity = max(utl_syntactic_similarity, url_semantic_similarity)
+        url_similarity = max(url_syntactic_similarity, url_semantic_similarity)
         return (title_similarity + url_similarity) / 2
 
     def CutAllButPageName(self, url):
