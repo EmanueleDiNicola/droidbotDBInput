@@ -6,7 +6,7 @@ class SqlDatabaseInfo:
     def __init__(self):
         self.driver = "{ODBC Driver 17 for SQL Server}"
         self.server = "DESKTOP-FQM5DAJ"
-        self.database = "test"
+        self.database = "Mantis"
         self.uid = "root"
         self.pwd = "password"
 

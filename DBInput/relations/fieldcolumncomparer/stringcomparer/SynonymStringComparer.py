@@ -18,7 +18,7 @@ class SynonymStringComparer(IStringComparer):
             self.cached_lemmatizer.Load()
         self.cached_synonyms = dict()
 
-    def StringSimilarity(self, s1, s2):
+    def StringSimilarity2(self, s1, s2):
         s1_lemmas = self.GetLemmas(s1)
         s2_lemmas = self.GetLemmas(s2)
         intersection = 0
@@ -76,7 +76,7 @@ class SynonymStringComparer(IStringComparer):
     def ComputeSimilarity(self, s1_lemmas, s2_lemmas, intersection):
         return intersection / (len(s1_lemmas) + len(s2_lemmas) - intersection)
 
-    def StringSimilarity2(self, word_1, word_2):
+    def StringSimilarity(self, word_1, word_2):
         s1_lemmas = self.GetLemmas(word_1)
         s2_lemmas = self.GetLemmas(word_2)
         tot = 0

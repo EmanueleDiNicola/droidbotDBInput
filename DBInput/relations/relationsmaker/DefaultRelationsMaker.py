@@ -66,6 +66,14 @@ class DefaultRelationsMaker(IRelationsMaker):
                 string_comparer.AddComparer(EditDistanceStringComparer())
                 string_comparer.AddComparer(Word2VecComparer(False))
                 self.field_column_comparer = MeanQualityComparer(string_comparer)
+            # Aggiunto da me
+            if relation_maker_type == "Test":
+                string_comparer = MeanComposedStringComparer()
+                # Provare a mettere True
+                string_comparer.AddComparer(Word2VecComparer(False))
+                string_comparer.AddComparer(EditDistanceStringComparer())
+                string_comparer.AddComparer(SynonymStringComparer())
+                self.field_column_comparer = MaxQualityComparer(string_comparer)
             self.set_cover_algorithm = MinimumSetCoverAlgorithm()
         else:
             self.field_column_comparer = field_column_comparer
@@ -79,9 +87,13 @@ class DefaultRelationsMaker(IRelationsMaker):
         if len(page.GetFields()) == 0:
             return self.CreatePageDatabaseRelation(list(), page)
         all_sims = self.ComputeAllSimilarities(page, database)
+        # print("all sims = " + str(len(all_sims)))
         filtered_sims = self.FilterSimilarities(page, all_sims)
+        # print("filtered_sims = " + str(len(filtered_sims)))
         all_matches = self.GenerateAllMatches(page, filtered_sims)
+        # print("All matches = " + str(len(all_matches)))
         best_match = self.EvaluateBestMatch(page, all_matches)
+        # print("Best match = " + str(len(best_match)))
         return self.CreatePageDatabaseRelation(best_match, page)
 
     def CreatePageDatabaseRelation(self, choosen_relations, page):
@@ -108,7 +120,7 @@ class DefaultRelationsMaker(IRelationsMaker):
             sim_for_field = all_sims_enum.where(lambda s: s.field.Same(field)).to_list()
             filtered_sims = filtered_sims.concat(Enumerable(MyDBSCAN().DBSCANForSims(sim_for_field)))
         schemas = dict()
-        # print(len(filtered_sims))
+        # print("filtered_sims method list length = " + str(len(filtered_sims)))
         for fc in filtered_sims:
             if fc.column.table_name not in schemas:
                 columns = list()
@@ -126,7 +138,11 @@ class DefaultRelationsMaker(IRelationsMaker):
             print("---------------------------------")
         """
         work_list = list(schemas.keys())
+        # print("work list length = " + str(len(work_list)))
+        # print(schemas.keys())
+        # print(work_list)
         for first_schema in schemas.keys():
+            work_list.remove(first_schema)
             # print(work_list)
             first_schema_similarity = self.ComputePageTableSimilarity(page, first_schema)
             for second_schema in work_list:
@@ -136,12 +152,20 @@ class DefaultRelationsMaker(IRelationsMaker):
                 second_contained = second_schema_enum.all(lambda i: i in schemas[first_schema])
                 equal = first_contained and second_contained
                 second_schema_similarity = self.ComputePageTableSimilarity(page, second_schema)
+                # print("equal = " + str(equal))
+                # first schema sim = second schema sim
+                # print("First_schema_sim = " + str(first_schema_similarity))
+                # print("Second_schema_sim = " + str(second_schema_similarity))
                 if (first_contained and not equal) or (equal and first_schema_similarity <= second_schema_similarity):
-                    filtered_sims = [item for item in filtered_sims.to_list() if item.column.table_name == second_schema]
+                    filtered_sims = [item for item in filtered_sims if item.column.table_name != first_schema]
+                    # print(1)
+                    # print(filtered_sims)
                     break
                 if (second_contained and not equal) or (equal and second_schema_similarity <= first_schema_similarity):
-                    filtered_sims = [item for item in filtered_sims.to_list() if item.column.table_name == first_schema]
-            work_list.remove(first_schema)
+                    filtered_sims = [item for item in filtered_sims if item.column.table_name != second_schema]
+                    # print(2)
+                    # print(filtered_sims)
+        # print("Filtered_sims list length 2 = " + str(len(filtered_sims)))
         schemas = dict()
         for fc in filtered_sims:
             if fc.column.table_name not in schemas:

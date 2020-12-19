@@ -5,10 +5,6 @@ import time
 from abc import abstractmethod
 
 import utils
-from DBInput.ValuesTests import cached_sql_query_engine
-from DBInput.database.DatabaseStructureFactory import DatabaseStructureFactory
-from DBInput.query.CachedMicrosoftSqlQueryEngine import CachedMicrosoftSqlQueryEngine
-from DBInput.query.SqlDatabaseInfo import SqlDatabaseInfo
 from intent import Intent
 
 POSSIBLE_KEYS = [
@@ -573,7 +569,7 @@ class ScrollEvent(UIEvent):
 
     def send(self, device):
         if self.view is not None:
-            from .device_state import DeviceState
+            from device_state import DeviceState
             width = DeviceState.get_view_width(view_dict=self.view)
             height = DeviceState.get_view_height(view_dict=self.view)
         else:

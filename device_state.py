@@ -409,7 +409,7 @@ class DeviceState(object):
                      'android:id/statusBarBackground']:
                 if self.__safe_dict_get(view_dict, 'editable') and \
                         self.__safe_dict_get(view_dict, 'text') is not None:
-                    pass
+                    touch_exclude_view_ids.add(view_dict['temp_id'])
                 else:
                     enabled_view_ids.append(view_dict['temp_id'])
         enabled_view_ids.reverse()
@@ -435,29 +435,44 @@ class DeviceState(object):
 
         for view_id in enabled_view_ids:
             if self.__safe_dict_get(self.views[view_id], 'long_clickable'):
-                possible_events.append(LongTouchEvent(view=self.views[view_id]))
+                pass
+                # possible_events.append(LongTouchEvent(view=self.views[view_id]))
 
         text_view_dict = dict()
+
         for view_id in enabled_view_ids:
             if self.__safe_dict_get(self.views[view_id], 'editable') and \
                     self.__safe_dict_get(self.views[view_id], 'text') is None:
+
+                # Salvo nome attività per vista
+                string = self.foreground_activity
+                sep = "/"
+                activity = string.split(sep, 1)[1]
+
+                # Associo ad ogni vista il nome dell'attività
                 text_view_dict[view_id] = self.views[view_id]
+                text_view_dict[view_id]["activity"] = activity
+
+                bounds = self.__safe_dict_get(self.views[view_id], 'bounds')
+                id_edit_text = view_id
+                for id_text_view in enabled_view_ids:
+                    if self.__safe_dict_get(self.views[id_text_view], 'class') == 'android.widget.TextView':
+                        bounds_text_view = self.__safe_dict_get(self.views[id_text_view], 'bounds')
+                        if abs(bounds_text_view[1][1] - bounds[0][1]) < 24:
+                            # Considerato solo il caso etichetta sopra  a field
+                            # print(bounds)
+                            # print(bounds_text_view)
+                            text_view_dict[id_edit_text]['associate_text_view'] = list()
+                            text_view_dict[id_edit_text]['associate_text_view'].append(self.views[id_text_view])
+                            # print(text_view_dict[id_edit_text]["resource_id"])
+                            # print(text_view_dict[id_edit_text]['associate_text_view'][0]['text'])
             if self.__safe_dict_get(self.views[view_id], 'editable') and \
                     self.__safe_dict_get(self.views[view_id], 'text') is not None:
                 touch_exclude_view_ids.add(view_id)
 
-        if text_view_dict:
-            string = self.foreground_activity
-            sep = "/."
-            activity = string.split(sep, 1)[1]
-
-            view_text_association = ViewTextAssociation(text_view_dict, activity)
-            view_text_dict = view_text_association.GetViewKeyValue()
-
-        if text_view_dict:
-            for view_id in text_view_dict:
-                possible_events.append(SetTextEvent(view=self.views[view_id], text=view_text_dict[view_id]))
-                touch_exclude_view_ids.add(view_id)
+        for view_id in text_view_dict:
+            possible_events.append(SetTextEvent(view=self.views[view_id], text=""))
+            touch_exclude_view_ids.add(view_id)
 
         for view_id in enabled_view_ids:
             if view_id in touch_exclude_view_ids:
@@ -466,6 +481,30 @@ class DeviceState(object):
             if children and len(children) > 0:
                 continue
             possible_events.append(TouchEvent(view=self.views[view_id]))
+        """
+        for id in enabled_view_ids:
+            view_class = self.__safe_dict_get(self.views[id], 'class')
+            if view_class == 'android.widget.EditText' or view_class == 'android.widget.TextView':
+                bounds = self.__safe_dict_get(self.views[id], 'bounds')
+                print(self.views[id])
+                print(bounds)
+        
+        
+        'class': 'android.widget.EditText'
+        'class': 'android.widget.TextView'
+        Da notare che TextView MantisBT URL = (3,213), (237, 264)
+        Bounds(Sopra, Sotto)
+        Sotto = Primo valore inizio X, inizio Y
+        Sopra = Primo valore fine X, fine Y
+        login_mantis_url = [[3, 264], [1077, 382]]
+        textview username = [[3, 382], [171, 433]]
+        login_username = [[3, 433], [1077, 551]]
+        Ordine dall'alto:
+        1) Textview URL
+        2) login_mantis_url
+        3) Textview Username
+        4) login_username
+        """
 
         # For old Android navigation bars
         possible_events.append(KeyEvent(name="MENU"))

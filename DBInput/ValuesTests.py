@@ -22,6 +22,8 @@ from DBInput.webapp.Field import Field
 from DBInput.webapp.Label import Label
 from DBInput.webapp.Page import Page
 
+"""
+
 labelA = Label("A")
 labelB = Label("B")
 fieldA = Field([labelA])
@@ -150,5 +152,6 @@ example_dict = dict()
 for relation in relations_results.GetRelations():
     example_dict[relation.field] = relations_results.GetData(relation.field, 1)
 print(example_dict)
+"""
 
 #exec(open("DBInput\ValuesTests.py").read())

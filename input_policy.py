@@ -4,6 +4,7 @@ import logging
 import random
 from abc import abstractmethod
 
+from DBInput.ViewTextAssociation import ViewTextAssociation
 from input_event import InputEvent, KeyEvent, IntentEvent, TouchEvent, ManualEvent, SetTextEvent
 from utg import UTG
 
@@ -364,7 +365,7 @@ class UtgGreedySearchPolicy(UtgBasedInputPolicy):
         self.__missed_states = set()
         self.__random_explore = False
 
-        self.editable_text_view_event = list()
+        self.edit_text_value = dict()
 
     def generate_event_based_on_utg(self):
         """
@@ -428,26 +429,50 @@ class UtgGreedySearchPolicy(UtgBasedInputPolicy):
 
         # Get all possible input events
         possible_events = current_state.get_possible_input()
+
+        count = 0
+        for activity in self.edit_text_value:
+            count = count + len(self.edit_text_value[activity])
+
         print("Possible events: " + str(len(possible_events)))
-        print("Editable Text Events: " + str(len(self.editable_text_view_event)))
+        print("Editable Text Events: " + str(count))
 
-        if self.last_state is not None and self.current_state.state_str == self.last_state.state_str:
-            self.editable_text_view_event = list()
+        """
+        for activity in self.edit_text_value:
+            string = activity + ": "
+            for resource_id in self.edit_text_value[activity]:
+                string = string + resource_id + " = " + str(self.edit_text_value[activity][resource_id].text) + ", "
+            print(string)
+        """
 
-        if len(self.editable_text_view_event) == 0:
-            for event in possible_events:
-                if isinstance(event, SetTextEvent):
-                    self.editable_text_view_event.append(event)
+        variation = False
+        activity_variation = list()
+        event_added = list()
 
-        "NON RIMUOVE CORRETTAMENTE EVENTO"
+        for event in possible_events:
+            if isinstance(event, SetTextEvent):
+                activity = event.view["activity"]
+                resource_id = event.view["resource_id"]
+                if activity not in self.edit_text_value or resource_id not in self.edit_text_value[activity]:
+                    if activity not in self.edit_text_value:
+                        self.edit_text_value[activity] = dict()
+                    self.edit_text_value[activity][resource_id] = event
+                    event_added.append(event)
+                    variation = True
+                    if activity not in activity_variation:
+                        activity_variation.append(activity)
 
-        if len(self.editable_text_view_event) is not 0:
-            for event in possible_events:
-                if isinstance(event, SetTextEvent):
-                    id_possible = event.view["resource_id"]
-                    for editable_event in self.editable_text_view_event:
-                        if id_possible == editable_event.view["resource_id"]:
-                            event.view["text"] = editable_event.view["text"]
+        if variation:
+            for activity in activity_variation:
+                event_list = list(self.edit_text_value[activity].values())
+                view_text_association = ViewTextAssociation(event_list)
+                complete_event_list = view_text_association.GetSetTextEvents()
+                for new_event in event_added:
+                    for event in complete_event_list:
+                        activity = event.view["activity"]
+                        resource_id = event.view["resource_id"]
+                        if new_event.view["resource_id"] == event.view["resource_id"]:
+                            self.edit_text_value[activity][resource_id] = event
 
         if self.random_input:
             random.shuffle(possible_events)
@@ -468,10 +493,11 @@ class UtgGreedySearchPolicy(UtgBasedInputPolicy):
                 self.logger.info("Trying an unexplored event.")
                 self.__event_trace += EVENT_FLAG_EXPLORE
                 if isinstance(input_event, SetTextEvent):
-                    id = input_event.view["resource_id"]
-                    for event in self.editable_text_view_event:
-                        if id == event.view["resource_id"]:
-                            self.editable_text_view_event.remove(event)
+                    resource_id = input_event.view["resource_id"]
+                    activity = input_event.view["activity"]
+                    for event_resource_id in self.edit_text_value[activity]:
+                        if resource_id == event_resource_id:
+                            input_event.text = self.edit_text_value[activity][event_resource_id].text
                 print(input_event)
                 return input_event
 

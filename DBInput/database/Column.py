@@ -75,7 +75,7 @@ class Column:
         return super().__getattribute__(name)
 
     def ToString(self):
-        output = self.name + " "
+        output = "Table = " + self.table_name + " - " + self.name + " "
         for value in self.values:
             output = output + " - " + str(value)
         return output

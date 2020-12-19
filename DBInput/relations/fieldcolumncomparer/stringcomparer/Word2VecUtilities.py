@@ -48,7 +48,7 @@ class Word2VecUtilities:
             else:
                 self.cached_words_similarity[word1 + word2] = 0
                 self.cached_words_similarity[word2 + word1] = 0
-                raise KeyNotFoundException()
+                # raise KeyNotFoundException()
         return self.cached_words_similarity[word1 + word2]
 
     # Codice preso in giro

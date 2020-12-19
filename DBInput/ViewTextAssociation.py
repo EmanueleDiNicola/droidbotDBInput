@@ -7,34 +7,46 @@ from DBInput.webapp.Label import Label
 from DBInput.webapp.Page import Page
 import numpy as np
 
+from input_event import SetTextEvent
+
 
 class ViewTextAssociation:
-    def __init__(self, views, activity):
+    def __init__(self, events):
         self.sql_database_info = SqlDatabaseInfo()
         self.cached_sql_query_engine = CachedMicrosoftSqlQueryEngine(self.sql_database_info)
         self.database_struct_fact = DatabaseStructureFactory(self.cached_sql_query_engine)
         self.database_struct = self.database_struct_fact.GetDatabaseStructure()
-        self.views = views
+        self.views = dict()
+        self.events = list()
+        for event in events:
+            self.views[event.view['temp_id']] = event.view
         self.page = None
-        self.number_tried = list()
-        self.views_id_key = dict()
-        self.views_key_value = dict()
-        self.CreatePage(activity)
 
-    def CreatePage(self, activity):
-        label_list = list()
+        self.views_resource = list()
+
+        self.views_key_value = dict()
+
+        self.CreatePage()
+
+    def CreatePage(self):
         url = "www.com"
+        field_list = list()
+        activity = ""
         for key in self.views:
-            id = self.ExtrapolateId(self.views[key])
+            label_list = list()
+            id = self.ExtrapolateId(self.views[key]["resource_id"])
             # Non è un url, modificare
             url = self.views[key]["package"]
+            activity = self.views[key]["activity"]
             label_list.append(self.CreateLabel(id))
-            self.views_id_key[id] = key
-        field_list = list()
-        for label in label_list:
-            field_list.append(self.CreateField([label]))
+            if "associate_text_view" in self.views[key]:
+                for text_view in self.views[key]["associate_text_view"]:
+                    text = text_view["text"]
+                    if text is not None:
+                        label_list.append(self.CreateLabel(text))
+            field_list.append(self.CreateField(label_list))
         self.page = self.CreatePageFromFields(field_list, url, activity)
-        relations_maker = DefaultRelationsMaker("MAXSIMILARITY_MAXLABELS_OLD")
+        relations_maker = DefaultRelationsMaker("Test")
         relations_results = relations_maker.FindBestMatch(self.page, self.database_struct)
         self.AssociateViewText(relations_results)
 
@@ -48,34 +60,27 @@ class ViewTextAssociation:
         return Page(fields, url, activity)
 
     def AssociateViewText(self, relations_results):
-        number_already_chosen = True
-        number = 0
         max_rows = 1000000000
         for key, element in relations_results.field_column_relations.items():
             actual_count = element.column.Count()
             if actual_count < max_rows:
                 max_rows = actual_count
+        number = np.random.randint(0, max_rows)
         for relation in relations_results.GetRelations():
-            while number_already_chosen:
-                number = np.random.randint(0, max_rows)
-                if number not in self.number_tried or len(self.number_tried) == max_rows:
-                    number_already_chosen = False
-                    if len(self.number_tried) == max_rows:
-                        self.number_tried = self.number_tried.clear()
-                        number = np.random.randint(0, max_rows)
-            self.number_tried.append(number)
-            id = relation.field.labels[0].value
-            key = self.views_id_key[id]
-            self.views_key_value[key] = relations_results.GetData(relation.field, number)
+            resource_id = relation.field.labels[0].value
+            print(relation.field.ToString())
+            print(relation.column.ToString())
+            self.views_key_value[resource_id] = relations_results.GetData(relation.field, number)
 
-    def ExtrapolateId(self, view):
-        string = view["resource_id"]
+    def ExtrapolateId(self, string):
         sep = "id/"
-        id = string.split(sep, 1)[1]
-        return id
+        resource_id = string.split(sep, 1)[1]
+        return resource_id
 
-    def GetViewIdKey(self):
-        return self.views_id_key
-
-    def GetViewKeyValue(self):
-        return self.views_key_value
+    def GetSetTextEvents(self):
+        for view in self.views:
+            view_resource_id = self.ExtrapolateId(self.views[view]["resource_id"])
+            view_temp_id = view
+            text = self.views_key_value[view_resource_id]
+            self.events.append(SetTextEvent(view=self.views[view_temp_id], text=text))
+        return self.events
