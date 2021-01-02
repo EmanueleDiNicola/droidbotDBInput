@@ -487,8 +487,31 @@ class UtgGreedySearchPolicy(UtgBasedInputPolicy):
         if self.device.humanoid is not None:
             possible_events = self.__sort_inputs_by_humanoid(possible_events)
 
+        new_input_event = None
+        if self.last_event is not None and self.last_event.event_type == 'touch' and \
+                self.last_event.view['class'] == 'android.widget.EditText':
+            resource_id = self.last_event.view['resource_id']
+            for input_event in possible_events:
+                if isinstance(input_event, SetTextEvent) and \
+                        input_event.view['resource_id'] == resource_id:
+                    new_input_event = input_event
+                    break
+
+        last_event_edit = False
+        if self.last_event is not None and self.last_event.event_type == 'set_text' and \
+                self.last_event.view['class'] == 'android.widget.EditText':
+            resource_id = self.last_event.view['resource_id']
+            last_event_edit = True
+
         # If there is an unexplored event, try the event first
         for input_event in possible_events:
+            if new_input_event is not None:
+                input_event = new_input_event
+            """
+            elif last_event_edit:
+                if input_event.view['resource_id'] == resource_id:
+                    continue
+            """
             if not self.utg.is_event_explored(event=input_event, state=current_state):
                 self.logger.info("Trying an unexplored event.")
                 self.__event_trace += EVENT_FLAG_EXPLORE

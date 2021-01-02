@@ -458,17 +458,30 @@ class DeviceState(object):
                 for id_text_view in enabled_view_ids:
                     if self.__safe_dict_get(self.views[id_text_view], 'class') == 'android.widget.TextView':
                         bounds_text_view = self.__safe_dict_get(self.views[id_text_view], 'bounds')
-                        if abs(bounds_text_view[1][1] - bounds[0][1]) < 24:
-                            # Considerato solo il caso etichetta sopra  a field
+                        # Sopra = bounds_text_view[1][1] - bounds[0][1]
+                        # Sinistra = bounds[0][0] - bounds_text_view[1][0] and bounds[0][1] - bounds_text_view[0][1]
+                        if (abs(bounds_text_view[1][1] - bounds[0][1]) < 24) or \
+                                ((abs(bounds[0][0] - bounds_text_view[1][0]) < 24) and
+                                 (abs(bounds[0][1] - bounds_text_view[0][1]) < 40)):
                             # print(bounds)
                             # print(bounds_text_view)
-                            text_view_dict[id_edit_text]['associate_text_view'] = list()
+                            
+                            if 'associate_text_view' not in text_view_dict[id_edit_text]:
+                                text_view_dict[id_edit_text]['associate_text_view'] = list()
+
                             text_view_dict[id_edit_text]['associate_text_view'].append(self.views[id_text_view])
                             # print(text_view_dict[id_edit_text]["resource_id"])
                             # print(text_view_dict[id_edit_text]['associate_text_view'][0]['text'])
             if self.__safe_dict_get(self.views[view_id], 'editable') and \
                     self.__safe_dict_get(self.views[view_id], 'text') is not None:
                 touch_exclude_view_ids.add(view_id)
+
+        """
+        Platform
+        [[3, 683], [150, 734]]
+        se.nextsource.android.mantisdroidfree:id/issue_edit_platform_edit
+        [[150, 650], [1077, 768]]
+        """
 
         for view_id in text_view_dict:
             possible_events.append(SetTextEvent(view=self.views[view_id], text=""))

@@ -17,15 +17,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/ValuesTests.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/ValuesTests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DBInput/ViewTextAssociation.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/ViewTextAssociation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/database/Column.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/database/Column.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/query/SqlDatabaseInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/query/SqlDatabaseInfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/SynonymStringComparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/SynonymStringComparer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Word2VecUtilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/Word2VecUtilities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DBInput/relations/relationsmaker/DefaultRelationsMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/relationsmaker/DefaultRelationsMaker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/device_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/device_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_event.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/input_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_policy.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +276,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start.py" />
-      <option name="PARAMETERS" value="-a &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\Mantis.apk&quot; -o &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\MantisOutput&quot; -policy bfs_greedy -is_emulator$AffectedModuleNames$" />
+      <option name="PARAMETERS" value="-a &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\Mantis\se.nextsource.android.mantisdroidfree_31_apps.evozi.com.apk&quot; -o &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\MantisOutput&quot; -policy dfs_greedy -is_emulator" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -292,15 +285,15 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.Column" />
+      <item itemvalue="Python.DefaultRelationsMaker" />
       <item itemvalue="Python.Label" />
+      <item itemvalue="Python.ValuesTests (1)" />
+      <item itemvalue="Python.ViewTextAssociation" />
       <item itemvalue="Python.device_state" />
       <item itemvalue="Python.droidbot_ime" />
-      <item itemvalue="Python.start" />
-      <item itemvalue="Python.ValuesTests (1)" />
-      <item itemvalue="Python.DefaultRelationsMaker" />
       <item itemvalue="Python.input_event" />
-      <item itemvalue="Python.ViewTextAssociation" />
-      <item itemvalue="Python.Column" />
+      <item itemvalue="Python.start" />
     </list>
     <recent_temporary>
       <list>
@@ -354,16 +347,16 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="526" y="204" key="#Notifications/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329836745" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608042128897">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609085676388">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607779560446" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607268869640" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1608042128897" />
-    <state x="421" y="45" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1608042064089">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1609085676388" />
+    <state x="421" y="45" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1608564770358">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="45" key="#com.intellij.ide.macro.MacrosDialog/0.0.1280.680@0.0.1280.680" timestamp="1608042064089" />
+    <state x="421" y="45" key="#com.intellij.ide.macro.MacrosDialog/0.0.1280.680@0.0.1280.680" timestamp="1608564770358" />
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser" timestamp="1605111969258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -373,10 +366,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="249" y="0" key="CommitChangelistDialog2/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604328835443" />
-    <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1604328488795">
+    <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1609085527026">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604328488795" />
+    <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1609085527026" />
     <state x="520" y="239" key="Github.ShareDialog" timestamp="1604329010773">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -385,34 +379,34 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="362" y="46" key="Github.UntrackedFilesDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329052856" />
-    <state width="1259" height="230" key="GridCell.Tab.0.bottom" timestamp="1608312557032">
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom" timestamp="1609265984250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
     <state width="1259" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
     <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1608312557032" />
-    <state width="1259" height="230" key="GridCell.Tab.0.center" timestamp="1608312557032">
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
+    <state width="1259" height="230" key="GridCell.Tab.0.center" timestamp="1609265984250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
     <state width="1259" height="204" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
     <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1608312557032" />
-    <state width="1259" height="230" key="GridCell.Tab.0.left" timestamp="1608312557032">
+    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
+    <state width="1259" height="230" key="GridCell.Tab.0.left" timestamp="1609265984250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
     <state width="1259" height="204" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
     <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1608312557032" />
-    <state width="1259" height="230" key="GridCell.Tab.0.right" timestamp="1608312557032">
+    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
+    <state width="1259" height="230" key="GridCell.Tab.0.right" timestamp="1609265984250">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
     <state width="1259" height="204" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
     <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1608312557032" />
+    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
     <state width="1259" height="204" key="GridCell.Tab.1.bottom" timestamp="1607103487796">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

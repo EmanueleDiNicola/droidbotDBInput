@@ -42,6 +42,11 @@ class ViewTextAssociation:
             if "associate_text_view" in self.views[key]:
                 for text_view in self.views[key]["associate_text_view"]:
                     text = text_view["text"]
+                    """
+                    if text_view["resource_id"] is not None:
+                        text_view_resource_id = self.ExtrapolateId(text_view["resource_id"])
+                        label_list.append(self.CreateLabel(text_view_resource_id))
+                    """
                     if text is not None:
                         label_list.append(self.CreateLabel(text))
             field_list.append(self.CreateField(label_list))
@@ -65,12 +70,18 @@ class ViewTextAssociation:
             actual_count = element.column.Count()
             if actual_count < max_rows:
                 max_rows = actual_count
-        number = np.random.randint(0, max_rows)
+        if max_rows != 1:
+            number = np.random.randint(0, max_rows - 1)
+        else:
+            number = 1
         for relation in relations_results.GetRelations():
             resource_id = relation.field.labels[0].value
             print(relation.field.ToString())
             print(relation.column.ToString())
-            self.views_key_value[resource_id] = relations_results.GetData(relation.field, number)
+            text = relations_results.GetData(relation.field, number)
+            if text == " ":
+                text = "Value Null in the column " + str(number)
+            self.views_key_value[resource_id] = text
 
     def ExtrapolateId(self, string):
         sep = "id/"
