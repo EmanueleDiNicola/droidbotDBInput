@@ -80,13 +80,14 @@ class SynonymStringComparer(IStringComparer):
         s1_lemmas = self.GetLemmas(word_1)
         s2_lemmas = self.GetLemmas(word_2)
         tot = 0
+        num = 0
         for s1_lemma in s1_lemmas:
             set_1 = wordnet.synsets(s1_lemma)
-            max_value = 0
             #best_word_1 = None
             #best_word_2 = None
             for s2_lemma in s2_lemmas:
                 set_2 = wordnet.synsets(s2_lemma)
+                max_value = 0
                 for word_set_1 in set_1:
                     for word_set_2 in set_2:
                         value = word_set_1.wup_similarity(word_set_2)
@@ -95,6 +96,11 @@ class SynonymStringComparer(IStringComparer):
                             max_value = value
                             #best_word_1 = word_set_1.name()
                             #best_word_2 = word_set_2.name()
-            #print(best_word_1 + " - " + best_word_2 + " = " + str(max_value))
-            tot = tot + max_value
-        return tot / (max(len(s1_lemmas), len(s2_lemmas)))
+                tot = tot + max_value
+                num = num + 1
+        if num == 0:
+            num = 1
+        tot = tot / num
+        #print(best_word_1 + " - " + best_word_2 + " = " + str(max_value))
+
+        return tot

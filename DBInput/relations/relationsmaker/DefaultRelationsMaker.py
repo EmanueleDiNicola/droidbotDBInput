@@ -69,7 +69,6 @@ class DefaultRelationsMaker(IRelationsMaker):
             # Aggiunto da me
             if relation_maker_type == "Test":
                 string_comparer = MeanComposedStringComparer()
-                # Provare a mettere True
                 string_comparer.AddComparer(Word2VecComparer(False))
                 string_comparer.AddComparer(EditDistanceStringComparer())
                 string_comparer.AddComparer(SynonymStringComparer())

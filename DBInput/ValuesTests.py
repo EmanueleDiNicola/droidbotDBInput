@@ -53,20 +53,22 @@ tprB.AddRelation(fcrB)
 tprB.AddRelation(fcrC)
 stringA = "mountainbike"
 stringB = "Ezechiele"
-dl_string_comp = DamerauLevenshteinStringComparer()
-jw_string_comp = JaroWinklerStringComparer()
 stringA = "GioVanNi:2_sfd"
 stringB = SplitCamelCase("Gi o Van Ni1")
 stringA = SplitCamelCase(stringA)
 stringA = SplitSeparators(stringA)
 stringC = SplitSeparators("Giov*Anni")
+
+"""
+dl_string_comp = DamerauLevenshteinStringComparer()
+jw_string_comp = JaroWinklerStringComparer()
 ed_string_comp = EditDistanceStringComparer()
 w2vec_util = Word2VecUtilities()
-test1 = w2vec_util.GetClosestWords(stringA)
 w2vec_comp_true = Word2VecComparer(True)
 w2vec_comp_false = Word2VecComparer(False)
-stringA = "best_styles"
-stringB = "good_model"
+stringB = "ice_water"
+stringA = "dog_duck"
+test1 = w2vec_util.GetClosestWords(stringA)
 syn_string_comp = SynonymStringComparer()
 syn_string_comp_value_1 = syn_string_comp.StringSimilarity(stringA, stringB)
 syn_string_comp_value_2 = syn_string_comp.StringSimilarity2(stringA, stringB)
@@ -75,13 +77,18 @@ w2vec_comp_res_true = w2vec_comp_true.StringSimilarity(stringB, stringA)
 w2vec_comp_res_false = w2vec_comp_false.StringSimilarity(stringB, stringA)
 jw_string_comp_value = jw_string_comp.StringSimilarity(stringA, stringB)
 dl_string_comp_value = dl_string_comp.StringSimilarity(stringA, stringB)
-#print("Value synonymStringSimilarity2 = " + str(syn_string_comp_value_2))
-#print("Value synonym.StringSimilarity1 = " + str(syn_string_comp_value_1))
-#print("Value EditDistance = " + str(ed_string_comp_value))
-#print("Value w2vec_True StringComp = " + str(w2vec_comp_res_true))
-#print("Value w2vec_false StringComp = " + str(w2vec_comp_res_false))
-#print("Value JW string comp = " + str(jw_string_comp_value))
-#print("Value DL string comp = " + str(dl_string_comp_value))
+
+print("Value synonym old = " + str(syn_string_comp_value_2))
+print("Value synonym new = " + str(syn_string_comp_value_1))
+print("Value w2vec_True StringComp = " + str(w2vec_comp_res_true))
+print("Value w2vec_false StringComp = " + str(w2vec_comp_res_false))
+
+"""
+print("Value EditDistance = " + str(ed_string_comp_value))
+print("Value w2vec_True StringComp = " + str(w2vec_comp_res_true))
+print("Value w2vec_false StringComp = " + str(w2vec_comp_res_false))
+print("Value JW string comp = " + str(jw_string_comp_value))
+print("Value DL string comp = " + str(dl_string_comp_value))
 
 # Comparers
 
@@ -153,5 +160,7 @@ for relation in relations_results.GetRelations():
     example_dict[relation.field] = relations_results.GetData(relation.field, 1)
 print(example_dict)
 """
+
+
 
 #exec(open("DBInput\ValuesTests.py").read())

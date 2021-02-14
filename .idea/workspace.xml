@@ -17,9 +17,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e6d226d7-cbcc-410f-b537-637722912f90" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBInput/ValuesTests.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/ValuesTests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DBInput/ViewTextAssociation.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/ViewTextAssociation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/device_state.py" beforeDir="false" afterPath="$PROJECT_DIR$/device_state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input_policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/input_policy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBInput/datafinder/DatabaseDataFinder.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/datafinder/DatabaseDataFinder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/SynonymStringComparer.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/fieldcolumncomparer/stringcomparer/SynonymStringComparer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBInput/relations/relationsmaker/DefaultRelationsMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBInput/relations/relationsmaker/DefaultRelationsMaker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +75,7 @@
       <recent name="H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\droidbot\droidbot\DBInput\database" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.start">
+  <component name="RunManager" selected="Python.ValuesTests (1)">
     <configuration name="Column" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="droidbot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -276,7 +278,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start.py" />
-      <option name="PARAMETERS" value="-a &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\Mantis\se.nextsource.android.mantisdroidfree_31_apps.evozi.com.apk&quot; -o &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\MantisOutput&quot; -policy dfs_greedy -is_emulator" />
+      <option name="PARAMETERS" value="-a &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\Mantis.apk&quot; -o &quot;H:\Cose Universita\Anno 3 semestre 2\Stage Droidbot\Mantis\MantisOutput&quot; -policy bfs_greedy -is_emulator" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -347,12 +349,12 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="526" y="204" key="#Notifications/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329836745" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609085676388">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609860553232">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607779560446" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607268869640" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1609085676388" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1609860553232" />
     <state x="421" y="45" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1608564770358">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -361,7 +363,6 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1605111969258" />
-    <state x="446" y="57" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1601304806529" />
     <state x="249" y="0" key="CommitChangelistDialog2" timestamp="1604328835443">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -379,34 +380,34 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="362" y="46" key="Github.UntrackedFilesDialog/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1604329052856" />
-    <state width="1259" height="230" key="GridCell.Tab.0.bottom" timestamp="1609265984250">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom" timestamp="1610815173423">
+      <screen x="-1920" y="-130" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
-    <state width="1259" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
-    <state width="1259" height="230" key="GridCell.Tab.0.center" timestamp="1609265984250">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1610815173423" />
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1610299231000" />
+    <state width="1259" height="230" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1610042224204" />
+    <state width="1259" height="230" key="GridCell.Tab.0.center" timestamp="1610815173423">
+      <screen x="-1920" y="-130" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
-    <state width="1259" height="204" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
-    <state width="1259" height="230" key="GridCell.Tab.0.left" timestamp="1609265984250">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1610815173423" />
+    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1610299231000" />
+    <state width="1259" height="230" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1610042224203" />
+    <state width="1259" height="230" key="GridCell.Tab.0.left" timestamp="1610815173423">
+      <screen x="-1920" y="-130" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
-    <state width="1259" height="204" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
-    <state width="1259" height="230" key="GridCell.Tab.0.right" timestamp="1609265984250">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1610815173423" />
+    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1610299231000" />
+    <state width="1259" height="230" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1610042224203" />
+    <state width="1259" height="230" key="GridCell.Tab.0.right" timestamp="1610815173423">
+      <screen x="-1920" y="-130" width="1280" height="680" />
     </state>
     <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1024.804.1024.728@0.0.1280.680" timestamp="1607967621224" />
-    <state width="1259" height="204" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1604685655665" />
-    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607358031622" />
-    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1609265984250" />
+    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1610815173423" />
+    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1610299231000" />
+    <state width="1259" height="230" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1610042224204" />
     <state width="1259" height="204" key="GridCell.Tab.1.bottom" timestamp="1607103487796">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -443,9 +444,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="348" y="73" width="585" height="534" key="find.popup/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1607098603524" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1606489219247">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="-1617" y="-129" width="672" height="678" key="search.everywhere.popup" timestamp="1610813080681">
+      <screen x="-1920" y="-130" width="1280" height="680" />
     </state>
+    <state x="-1617" y="-129" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/-1920.-130.1280.680@-1920.-130.1280.680" timestamp="1610813080681" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/-1920.-130.1280.680@0.0.1280.680" timestamp="1606489219247" />
   </component>
 </project>

@@ -30,7 +30,7 @@ class DatabaseDataFinder(IDataFinder):
         return relation
 
     def PrintBestMatches(self, best_matches, total_quality):
-        print("Best matches forund:")
+        print("Best matches found:")
         tables = list()
         column = list()
         for r in best_matches:
@@ -40,7 +40,7 @@ class DatabaseDataFinder(IDataFinder):
                   + "the match is " + r.value)
 
     def GetUnrelatedData(self, page):
-        relation = GetRelation(page)
+        relation = self.GetRelation(page)
         data_for_fields = dict()
         for field in page.GetFields():
             self.r = np.random.randint(1000000000000)

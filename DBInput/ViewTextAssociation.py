@@ -35,7 +35,6 @@ class ViewTextAssociation:
         for key in self.views:
             label_list = list()
             id = self.ExtrapolateId(self.views[key]["resource_id"])
-            # Non è un url, modificare
             url = self.views[key]["package"]
             activity = self.views[key]["activity"]
             label_list.append(self.CreateLabel(id))
