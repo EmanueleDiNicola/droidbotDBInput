@@ -9,6 +9,8 @@ import numpy as np
 
 from input_event import SetTextEvent
 
+#Test
+
 
 class ViewTextAssociation:
     def __init__(self, events):
